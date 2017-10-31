@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_viewcourses"
+        android:icon="@mipmap/ic_view_list_black_24dp"
+        android:title="View Courses" />
+
+</menu>

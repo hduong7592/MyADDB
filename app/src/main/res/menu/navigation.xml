@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_addcourse"
+        android:icon="@mipmap/ic_add_circle_outline_black_24dp"
+        android:title="Add Course" />
+    <item
+        android:id="@+id/navigation_logout"
+        android:icon="@mipmap/ic_exit_to_app_black_24dp"
+        android:title="Logout" />
+
+</menu>
