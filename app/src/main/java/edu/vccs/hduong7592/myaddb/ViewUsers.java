@@ -19,10 +19,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import Classes.GetData;
-import Classes.User;
 
 public class ViewUsers extends AppCompatActivity {
 
@@ -128,7 +126,7 @@ public class ViewUsers extends AppCompatActivity {
 
                     ListAdapter adapter = new SimpleAdapter(
                             ViewUsers.this, contactList,
-                            R.layout.userslayout, new String[]{"name", "id", "email"}, new int[]{R.id.NameLB,
+                            R.layout.layout_users, new String[]{"name", "id", "email"}, new int[]{R.id.NameLB,
                             R.id.UserIDLB, R.id.UserEmailLB});
 
                     UserList.setAdapter(adapter);

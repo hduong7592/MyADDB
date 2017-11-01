@@ -14,14 +14,14 @@ import org.ksoap2.transport.HttpTransportSE;
 
 public class GetData {
 
-    public String LogIn(String User, String Pass){
+    public String LogIn(String User, String Pass, String logfrom){
 
         String response = "";
 
         final String NAMESPACE = "http:/myaddb.azurewebsites.net/";
         final String URL = "http://myaddb.azurewebsites.net/WebService.asmx";
-        final String SOAP_ACTION = "http:/myaddb.azurewebsites.net/MobileLogIn";
-        final String METHOD_NAME = "MobileLogIn";
+        final String SOAP_ACTION = "http:/myaddb.azurewebsites.net/LogIn";
+        final String METHOD_NAME = "LogIn";
 
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
 
@@ -38,8 +38,8 @@ public class GetData {
         request.addProperty(PI);
 
         PI = new PropertyInfo();
-        PI.setName("SessionID");
-        PI.setValue("abc");
+        PI.setName("logfrom");
+        PI.setValue(logfrom);
         PI.setType(String.class);
         request.addProperty(PI);
 

@@ -1,15 +1,19 @@
 package edu.vccs.hduong7592.myaddb;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class AdminHome extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -18,12 +22,19 @@ public class AdminHome extends AppCompatActivity
     String LastName;
     String Role;
 
+    Button clearChapterBtn, clearAssignsBtn, clearCoursesBtn, clearAllBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        clearChapterBtn = (Button) findViewById(R.id.clearChaptersBtn);
+        clearAssignsBtn = (Button) findViewById(R.id.clearAssignsBtn);
+        clearCoursesBtn = (Button) findViewById(R.id.clearCoursesBtn);
+        clearAllBtn = (Button) findViewById(R.id.clearAllBtn);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -38,6 +49,34 @@ public class AdminHome extends AppCompatActivity
         FirstName = myintent.getStringExtra("firstName");
         LastName = myintent.getStringExtra("lastName");
         Role = myintent.getStringExtra("role");
+
+        clearAssignsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSimpleDialog("Clear Assignment", "");
+            }
+        });
+
+        clearChapterBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSimpleDialog("Clear Chapter","");
+            }
+        });
+
+        clearCoursesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSimpleDialog("Clear Courses","");
+            }
+        });
+
+        clearAllBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSimpleDialog("Clear All","");
+            }
+        });
     }
 
     @Override
@@ -99,5 +138,24 @@ public class AdminHome extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    /**
+     * Alert box
+     * @param Message
+     */
+
+    public void showSimpleDialog(String Message, String Title) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(AdminHome.this);
+        builder.setCancelable(false);
+        builder.setTitle(Title);
+        builder.setMessage(Message);
+        builder.setPositiveButton("Got it!", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
     }
 }

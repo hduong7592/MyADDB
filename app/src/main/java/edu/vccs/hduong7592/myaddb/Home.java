@@ -29,7 +29,7 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        setTitle("Assignments Distributor Application");
+        setTitle("Assignments Distributor");
         UsernameTxt = (EditText) findViewById(R.id.UsernameTxt);
         PasswordTxt = (EditText) findViewById(R.id.PasswordTxt);
         LoginBtn = (Button) findViewById(R.id.LoginBtn);
@@ -157,7 +157,7 @@ public class Home extends AppCompatActivity {
         protected String doInBackground(String... strings) {
 
             GetData LogInData = new GetData();
-            String response = LogInData.LogIn(User, Pass);
+            String response = LogInData.LogIn(User, Pass, "Mobile");
             return response;
 
         }
