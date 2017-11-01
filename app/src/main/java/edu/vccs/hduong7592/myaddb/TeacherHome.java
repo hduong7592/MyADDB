@@ -30,6 +30,7 @@ public class TeacherHome extends AppCompatActivity {
 
     int roleID;
     int userID;
+    String firstName;
 
     ListView CourseList;
     ArrayList<HashMap<String, String>> courseRows;
@@ -38,7 +39,7 @@ public class TeacherHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher_home);
-        setTitle("Welcome Teacher");
+
 
         //mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -61,6 +62,20 @@ public class TeacherHome extends AppCompatActivity {
             Toast.makeText(TeacherHome.this, ex.toString(), Toast.LENGTH_LONG).show();
         }
 
+        firstName = "";
+
+        try {
+            firstName = myIntent.getStringExtra("firstName");
+        } catch (Exception ex) {
+            firstName = "";
+        }
+
+        if (firstName !=null &&  !firstName.isEmpty()){
+            setTitle("Welcome Professor "+firstName+"!");
+        }
+        else{
+            setTitle("Welcome Professor!");
+        }
 
         courseRows = new ArrayList<>();
 

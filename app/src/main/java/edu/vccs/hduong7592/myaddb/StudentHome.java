@@ -30,7 +30,7 @@ public class StudentHome extends AppCompatActivity {
 
     int roleID;
     int userID;
-
+    String firstName;
     ListView courseList;
     ArrayList<HashMap<String, String>> courseRows;
 
@@ -41,8 +41,6 @@ public class StudentHome extends AppCompatActivity {
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        setTitle("Welcome Student");
 
         Intent myIntent = getIntent();
         roleID = 0;
@@ -60,7 +58,20 @@ public class StudentHome extends AppCompatActivity {
             userID = 0;
             Toast.makeText(StudentHome.this, ex.toString(), Toast.LENGTH_LONG).show();
         }
+        firstName = "";
 
+        try {
+            firstName = myIntent.getStringExtra("firstName");
+        } catch (Exception ex) {
+            firstName = "";
+        }
+
+        if (firstName !=null &&  !firstName.isEmpty()){
+            setTitle("Welcome "+firstName+"!");
+        }
+        else{
+            setTitle("Welcome Student!");
+        }
 
         courseRows = new ArrayList<>();
 
